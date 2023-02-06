@@ -1,5 +1,3 @@
-
-
 package com.portfolio.aem.Entity;
 
 import javax.persistence.Entity;
@@ -7,19 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity 
+@Entity
 public class Experiencia {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
-private String nombreE;
-private String descripcione;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nombreE;
+    private String descripcionE;
 
 //CONSTRUCTORES
-
-    public Experiencia(String nombreE, String descripcione) {
+    public Experiencia(String nombreE, String descripcionE) {
         this.nombreE = nombreE;
-        this.descripcione = descripcione;
+        this.descripcionE = descripcionE;
     }
 
     public Experiencia() {
@@ -42,14 +40,12 @@ private String descripcione;
         this.nombreE = nombreE;
     }
 
-    public String getDescripcione() {
-        return descripcione;
+    public String getDescripcionE() {
+        return descripcionE;
     }
 
-    public void setDescripcione(String descripcione) {
-        this.descripcione = descripcione;
+    public void setDescripcionE(String descripcionE) {
+        this.descripcionE = descripcionE;
     }
-    
-
 
 }

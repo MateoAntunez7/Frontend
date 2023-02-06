@@ -7,16 +7,11 @@ package com.portfolio.aem.Dto;
 
 import javax.validation.constraints.NotBlank;
 
-/**
- *
- * @author User
- */
 public class dtoExperiencia {
     @NotBlank
     private String nombreE;
     @NotBlank
     private String descripcionE;
-    
     
     //Constructores
 
@@ -27,8 +22,7 @@ public class dtoExperiencia {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
     }
-    
-    //getter y setter
+    //Getters & Setters
 
     public String getNombreE() {
         return nombreE;
@@ -45,6 +39,5 @@ public class dtoExperiencia {
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
     }
-    
     
 }
