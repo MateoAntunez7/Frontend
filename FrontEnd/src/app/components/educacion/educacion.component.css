@@ -1,10 +1,21 @@
 .row{
     padding-left: 150px;
     padding-right: 150px;
+    background-color:#CBA1A1 ;
 }
 div{
-    background-color: #CBA1A1;
+    background-color: CBA1A1;
+    color: #000000;
+    
 }
-h1,h3{
+h2,h3{
     display: inline;
+    
+    
+    
+    
+    
+
+
+    
 }
