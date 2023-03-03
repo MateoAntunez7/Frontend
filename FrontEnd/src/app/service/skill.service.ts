@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { identifierName } from '@angular/compiler';
 import { Observable } from 'rxjs';
 import { Skill } from '../model/skill';
 

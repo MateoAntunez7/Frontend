@@ -7,13 +7,10 @@ package com.portfolio.aem.Dto;
 
 import javax.validation.constraints.NotBlank;
 
-/**
- *
- * @author User
- */
 public class dtoEducacion {
     @NotBlank
     private String nombreE;
+    @NotBlank
     private String descripcionE;
 
     public dtoEducacion() {
@@ -41,5 +38,4 @@ public class dtoEducacion {
     }
     
     
-
 }
