@@ -1,20 +1,33 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroments/enviroments';
 import { Experiencia } from '../model/experiencia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SExperienciaService {
-  expURL = 'http://localhost:8080/explab/';
+  expURL = environment.URL + 'explab/'
 
   constructor(private httpClient: HttpClient) { }
+
+  makeRequest() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*' // o el dominio del servidor que aloja el recurso
+    });
+  
+    this.httpClient.get('https://backendaem.onrender.com/explab', { headers }).subscribe((response) => {
+      // procesar la respuesta aquí
+    });
+  }
+  
 
   public lista(): Observable<Experiencia[]> {
     return this.httpClient.get<Experiencia[]>(this.expURL + 'lista');
   }
-
+  
   public detail(id: number): Observable<Experiencia>{
     return this.httpClient.get<Experiencia>(this.expURL + `detail/${id}`);
   } 
@@ -30,4 +43,5 @@ export class SExperienciaService {
   public delete(id:number): Observable<any>{
     return this.httpClient.delete<any>(this.expURL + `delete/${id}`);
   }
+  
 }
