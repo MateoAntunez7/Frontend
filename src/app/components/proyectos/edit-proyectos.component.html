@@ -1,0 +1,32 @@
+<div class="container" *ngIf="proyecto">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="proyecto.nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">link al proyecto</label>
+                    <input type="text" class="form-control" id="link" name="link" [(ngModel)]="proyecto.link" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripcion </label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcion" required>
+                </div>
+                <div class="form-group">
+                    <label for="img">Imagen</label>
+                    <input type="file" class="form-control" id="img" name="img" (change)="uploadImage($event)"
+                    accept=".jpg, .jpeg, .png">
+                </div>
+                <div class="imagen">
+                    <img [src]="imageService.url || proyecto.img" width="200px">
+                </div>
+                <br>
+                <button class="btn btn-primary">
+                    Editar proyecto
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,32 @@
 <div class="row">
-  <h1><u>Proyectos Realizados</u></h1>
-  <div class="contenedor"></div>
-  <div class="col-sm-12 col-md-7 col-lg-7 parte1">
-    <h1>Control de stock de vinotenca "Le Mone"</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni et
-      voluptatem sunt harum pariatur aspernatur est perferendis incidunt
-      nesciunt nulla sed voluptates numquam, aliquam asperiores dolorum dolores
-      eos eum voluptatum!
-    </p>
-    <a href="https://landingpagevinos.dfrweb.com/#" target="_blank">Ver pagina "Le Mone"</a>
+    <h1>Proyectos</h1>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/nuevoProyecto" *ngIf="isLogged">
+            Nuevo Proyecto
+        </button>
+    </div>
+  
+    <div class="col lg 1"></div>
+    <div class="col-lg-11">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let proyecto of proyectos">
+                    <td>
+                        <h2>{{proyecto.nombre}}</h2>
+                    </td>
+                    <td>{{proyecto.descripcion}} <img src="{{proyecto.img}}" class="img-fluid" id="img-proyecto"><a href="{{proyecto.link}}" target="_blank">Ir al sitio web</a></td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-light" routerLink="/editProyecto/{{proyecto.id}}">
+                            <i class="bi bi-pencil-fill"></i> EDITAR</button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-danger" (click)="eliminar(proyecto.id)">
+                            <i class="bi bi-trash-fill"></i> BORRAR</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
   </div>
-  <div class="col-sm-12 col-md-3 col-lg-3 offset-md-1 parte2">
-    <img src="../../../assets/Le Mone.JPG" class="img-fluid img-proyecto">
-</div>
+  
