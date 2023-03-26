@@ -1,12 +1,9 @@
 <div class="row">
     <h1>Proyectos</h1>
     <div class="col-lg-2">
-        <button type="button" class="btn btn-dark" routerLink="/nuevoProyecto" *ngIf="isLogged">
-            Nuevo Proyecto
-        </button>
+        <button type="button" class="btn btn-dark" routerLink="/nuevoProyecto" *ngIf="isLogged">Nuevo Proyecto</button>
     </div>
-  
-    <div class="col lg 1"></div>
+    <div class="col-lg-1"></div>
     <div class="col-lg-11">
         <table class="table">
             <tbody>
@@ -14,19 +11,17 @@
                     <td>
                         <h2>{{proyecto.nombre}}</h2>
                     </td>
-                    <td>{{proyecto.descripcion}} <img src="{{proyecto.img}}" class="img-fluid" id="img-proyecto"><a href="{{proyecto.link}}" target="_blank">Ir al sitio web</a></td>
+                    <td>{{proyecto.descripcion}} <img [src]="proyecto.img" class="img-fluid" id="img-proyecto"><a href="{{proyecto.link}}" target="_blank">Ir al sitio web</a></td>
+
+
                     <td *ngIf="isLogged">
-                        <button class="btn btn-light" routerLink="/editProyecto/{{proyecto.id}}">
-                            <i class="bi bi-pencil-fill"></i> EDITAR</button>
+                        <button class="btn btn-light" routerLink="/editProyecto/{{proyecto.id}}"><i class="bi bi-pencil-fill"></i> EDITAR</button>
                     </td>
                     <td *ngIf="isLogged">
-                        <button class="btn btn-danger" (click)="eliminar(proyecto.id)">
-                            <i class="bi bi-trash-fill"></i> BORRAR</button>
+                        <button class="btn btn-danger" (click)="eliminar(proyecto.id)"><i class="bi bi-trash-fill"></i> BORRAR</button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-  
-  </div>
-  
+</div>

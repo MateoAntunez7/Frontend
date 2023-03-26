@@ -10,19 +10,22 @@ import { Proyectos } from 'src/app/model/proyectos';
   styleUrls: ['./edit-proyectos.component.css']
 })
 export class EditProyectosComponent implements OnInit {
+  img: string = '';
   proyecto: Proyectos = null;
-  
-  constructor(private activatedRouter: ActivatedRoute, 
-              private proyectosService: ProyectosService, 
-              private router: Router, 
-              public imageService: ImageService) { }
+
+  constructor(private activatedRouter: ActivatedRoute,
+    private proyectosService: ProyectosService,
+    private router: Router,
+    public imageService: ImageService) { }
 
   ngOnInit(): void {
+
+    this.img = this.imageService.url;
     const id = this.activatedRouter.snapshot.params['id'];
     this.proyectosService.detail(id).subscribe(
       data => {
         this.proyecto = data;
-      }, 
+      },
       error => {
         console.error(error);
         alert("Error al cargar el proyecto");
@@ -39,7 +42,7 @@ export class EditProyectosComponent implements OnInit {
     this.proyectosService.update(id, this.proyecto).subscribe(
       data => {
         this.router.navigate(['']);
-      }, 
+      },
       error => {
         console.error(error);
         alert("Error al actualizar el proyecto");
@@ -48,10 +51,21 @@ export class EditProyectosComponent implements OnInit {
     );
   }
 
-  uploadImage(event: any): void {
+  uploadImage($event: any): void {
     const id = this.activatedRouter.snapshot.params['id'];
-    const name = "proyecto_" + id;
-    this.imageService.uploadImage(event, name);
+    alert('esta es la id' + id)
+    let name;
+
+    if (id) {
+      name = "Proyecto_" + id;
+    } else {
+      name = "Proyecto_" + this.imageService.generateUUID();
+    }
+
+    this.imageService.uploadImage($event, name)
+    /*const name = "proyecto_" + id;
+    this.imageService.uploadImage($event, name);*/
   }
+
 }
 

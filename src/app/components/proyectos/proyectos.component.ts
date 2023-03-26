@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proyectos } from 'src/app/model/proyectos';
 import { ProyectosService } from 'src/app/service/proyectos.service';
 import { TokenService } from 'src/app/service/token.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-proyectos',
@@ -33,7 +33,7 @@ export class ProyectosComponent implements OnInit {
     this.sProyectos.lista().subscribe(data => { 
       this.proyectos = data;
       this.proyectos.forEach((proyecto) => {
-        proyecto.img = this.sanitizer.bypassSecurityTrustUrl(proyecto.img as string);
+        proyecto.img = this.sanitizer.bypassSecurityTrustUrl(proyecto.img as string) as SafeUrl;
       });
     });
   }
@@ -50,4 +50,10 @@ export class ProyectosComponent implements OnInit {
       );
     }
   }
+  limpiarImagen(imagen: string): string {
+    // Eliminar cualquier script malicioso de la cadena de la imagen
+    return imagen.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  }
+  
 }
+
